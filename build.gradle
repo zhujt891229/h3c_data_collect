@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'edu.sc.seis.launch4j' version '2.4.7'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation('junit:junit:4.13.2')
+    implementation('com.google.guava:guava:31.0.1-jre')
+    implementation('cn.hutool:hutool-all:5.7.10')
+    //implementation('mysql:mysql-connector-java:8.0.12')
+    implementation('mysql:mysql-connector-java:5.1.49')
+    implementation('org.apache.poi:poi-ooxml:4.1.2')
+    implementation files('lib/datepicker.jar')
+
+}
+
+launch4j {
+
+    mainClassName = 'com.shinwa.datacollect.LoginFrame'
+    //mainClassName = 'com.shinwa.datacollect.jxc.LoginPanel'
+
+    //icon = 'windows ipaicon.ico'
+
+    //jreVersion = '1.8.0_211'
+    jreMinVersion('1.8')
+
+    bundledJrePath = 'C:\\Program Files (x86)\\Java\\jre-1.8'
+
+    headerType = 'gui'
+    //headerType = 'console'
+
+    outfile = 'app.exe'
+
+    //classpath = sourceSets.main.runtimeClasspath
+    //classpath='D:\\IdeaProjects\\h3c_data_collect\\build\\classes'
+
+    //jvmArgs = '-Dfile.encoding=UTF-8'
+
+}
+
